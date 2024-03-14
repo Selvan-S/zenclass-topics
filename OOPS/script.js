@@ -2,18 +2,20 @@
 //Factory functions
 // return an objects
 
-function fun(params) {
+function fun(a, b) {
   // code
-  console.log("===================================================");
-  return params;
+  let c = a + b;
+  return c;
 }
+let a = 3;
+let d = a + fun(1, 2);
+console.log(d);
 
-let toy = fun("a");
-console.log(toy1);
+fun("abasddfsfsdf");
 
 function createToy(name, dia, type, color, wrapper) {
   let obj = {
-    dia,
+    diameter: dia,
     type,
     color,
     wrapper,
@@ -109,7 +111,17 @@ HpLaptop.getPName();
 //Abstraction
 //PolyMorphism
 
-class Guvi {
+class Pen {
+  constructor(cap, body, refill) {
+    this.cap = cap;
+    this.body = body;
+    this.refill = refill;
+  }
+}
+
+const hero = new Pen("yes", "yes", "yes");
+const reyloes = new Pen("no", "no", "yes");
+Pen.prototype.pencil = class Guvi {
   //Encapsulation
   constructor(batch, topic, mentor, time, task) {
     // {}
@@ -138,7 +150,7 @@ class Guvi {
        Mentor : ${this.mentor}
     `);
   }
-}
+};
 
 const todaySession = new Guvi(57, "OOPS", "Sanjay", "8.10", 60);
 console.log(todaySession);

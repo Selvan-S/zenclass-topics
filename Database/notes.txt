@@ -1,0 +1,153 @@
+/**
+ * DB server
+
+list of DB -> showdbs
+
+access or create certain DB
+-> use <dbName>
+
+list all collections
+-> show collections
+
+drop this db
+-> db.dropDatabase();
+
+
+collections
+db.createCollection
+ */
+
+/**
+ * 
+ db.posts.insertMany([
+  {
+    "companyName": "Zoho",
+    "role": "SDE",
+    "package": 10,
+    "date": 1715053687,
+    "location": "Chennai",
+    "experience": 3
+  },
+  {
+    "companyName": "Google",
+    "role": "System Architect",
+    "package": 20,
+    "date": 1715053627,
+    "location": "Bangalore",
+    "experience": 6
+  },
+  {
+    "companyName": "Facebook",
+    "role": "FSD",
+    "package": 10,
+    "date": 1715053627,
+    "location": "Pune",
+    "experience": 8
+  },
+  {
+    "companyName": "PayPal",
+    "role": "FSD",
+    "package": 10,
+    "date": 1715053627,
+    "location": "Hyderabad",
+    "experience": 4
+  }
+]
+)
+
+ db.referrals.insertMany([
+{
+    "name" : "sanjay",
+    "company" : "Amazon",
+    "designation" : "Lead"
+  },
+  {
+    "name" : "praveen",
+    "company" : "Amazon",
+    "designation" : "FDE"
+  },
+  {
+    "name" : "Shanthini",
+    "company" : "Flipkart",
+    "designation" : "Developer"
+  },
+  {
+    "name" : "Thirumaran",
+    "company" : "Myntra",
+    "designation" : "SDE"
+  },
+  {
+    "name" : "Selvan",
+    "company" : "PayPal",
+    "designation" : "SDE"
+  }
+]
+)
+
+db.referrals.find().toArray();
+db.referrals.find().forEach((ref)=>{
+  print("Ref-Name: ", ref.name)
+});
+ 
+ db.posts.find({$or:[{package: {$gt:10}, {experience:{$lt:5}}}]})
+
+
+db.posts.insertMany(
+  [
+  {
+    "companyName": "Amazon",
+    "role": "SDE",
+    "package": 10,
+    "experience": 1,
+    "location": "chennai"
+  },
+  {
+    "companyName": "Flipkart",
+    "role": "System Architect",
+    "package": 20,
+    "experience": 5,
+    "location": "bangalore"
+  },
+  {
+    "companyName" : "PayPal",
+    "role": "Full Stack",
+    "package": 15,
+    "experience": 3,
+    "location": "chennai"
+  },
+  {
+    "companyName": "Myntra",
+    "role": "SDE",
+    "package": 12,
+    "experience": 2,
+    "location": "Hyderabad"
+  }
+]
+);
+
+db.referrals.insertOne(
+  {
+    "name": "Cody",
+    "company": "Tesla",
+    "designation": "SDE"
+  }
+);
+
+db.referrals.aggregate([
+  {
+    $group: {
+      _id: "$name",
+      duplicate: { $addToSet: "$_id"},
+      totalCount: { $sum: 1},
+    }
+  },
+  {
+    $match: {
+      totalCount: { $gt: 1}
+    }
+  }
+])
+
+
+db.products.createIndex({product_material:"text"});
+db.products.find({$text:{$search:"soft"}}); 

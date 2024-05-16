@@ -1,0 +1,27 @@
+[
+  {
+    "name": "sanjay",
+    "company": "Amazon",
+    "designation": "Lead"
+  },
+  {
+    "name": "praveen",
+    "company": "Amazon",
+    "designation": "FDE"
+  },
+  {
+    "name": "Shanthini",
+    "company": "Flipkart",
+    "designation": "Developer"
+  },
+  {
+    "name": "Thirumaran",
+    "company": "Myntra",
+    "designation": "SDE"
+  },
+  {
+    "name": "Selvan",
+    "company": "PayPal",
+    "designation": "SDE"
+  }
+]
